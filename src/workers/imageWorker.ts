@@ -65,6 +65,12 @@ self.onmessage = (e: MessageEvent<WorkerMessage>) => {
       const data = new Uint8ClampedArray(msg.buffer);
       const step = 255 / Math.max(1, msg.levels - 1);
       for (let i = 0; i < data.length; i += 4) {
+        if (data[i + 3] === 0) {
+          data[i] = 0;
+          data[i + 1] = 0;
+          data[i + 2] = 0;
+          continue;
+        }
         data[i] = Math.round(Math.round(data[i] / step) * step);
         data[i + 1] = Math.round(Math.round(data[i + 1] / step) * step);
         data[i + 2] = Math.round(Math.round(data[i + 2] / step) * step);

@@ -262,6 +262,39 @@ function runPixelWorker(
   });
 }
 
+export interface TargetCompressionResult {
+  blob: Blob;
+  qualityUsed: number;
+  width: number;
+  height: number;
+  targetMet: boolean;
+}
+
+/**
+ * Clears hidden RGB bytes on fully transparent pixels (alpha === 0) for cleaner lossless PNG deflate.
+ */
+export function cleanTransparentRgb(source: HTMLCanvasElement): HTMLCanvasElement {
+  const out = document.createElement('canvas');
+  out.width = source.width;
+  out.height = source.height;
+  const ctx = out.getContext('2d');
+  if (!ctx) return source;
+  ctx.drawImage(source, 0, 0);
+  const imgData = ctx.getImageData(0, 0, out.width, out.height);
+  const d = imgData.data;
+  let changed = false;
+  for (let i = 0; i < d.length; i += 4) {
+    if (d[i + 3] === 0 && (d[i] !== 0 || d[i + 1] !== 0 || d[i + 2] !== 0)) {
+      d[i] = 0;
+      d[i + 1] = 0;
+      d[i + 2] = 0;
+      changed = true;
+    }
+  }
+  if (changed) ctx.putImageData(imgData, 0, 0);
+  return out;
+}
+
 /**
  * Compresses canvas to fit under targetBytes.
  * For lossy formats (JPEG/WEBP), binary-searches quality and scales down only if needed.
@@ -272,7 +305,7 @@ export async function compressToTargetSize(
   mimeType: string,
   targetBytes: number,
   options?: { allowScaleDown?: boolean; backgroundColor?: string }
-): Promise<{ blob: Blob; qualityUsed: number; width: number; height: number }> {
+): Promise<TargetCompressionResult> {
   const allowScaleDown = options?.allowScaleDown ?? true;
   const bg = options?.backgroundColor;
 
@@ -282,56 +315,118 @@ export async function compressToTargetSize(
   }
 
   if (mimeType === 'image/png') {
-    let blob = await canvasToBlob(working, 'image/png');
-    if (blob.size <= targetBytes) {
-      return { blob, qualityUsed: 1, width: working.width, height: working.height };
+    const cleaned = cleanTransparentRgb(working);
+    let bestBlob = await canvasToBlob(cleaned, 'image/png');
+    let bestW = cleaned.width;
+    let bestH = cleaned.height;
+    let bestQ = 1;
+
+    if (bestBlob.size <= targetBytes) {
+      return {
+        blob: bestBlob,
+        qualityUsed: 1,
+        width: bestW,
+        height: bestH,
+        targetMet: true,
+      };
     }
-    const levels = [64, 32, 16, 8];
+
+    const levels = [48, 24, 14, 8, 5];
     for (const lv of levels) {
-      const qCanvas = await quantizeCanvasColorsAsync(working, lv);
-      blob = await canvasToBlob(qCanvas, 'image/png');
-      if (blob.size <= targetBytes) {
-        return { blob, qualityUsed: lv / 64, width: qCanvas.width, height: qCanvas.height };
+      const qCanvas = await quantizeCanvasColorsAsync(cleaned, lv);
+      const cand = await canvasToBlob(qCanvas, 'image/png');
+      if (cand.size < bestBlob.size) {
+        bestBlob = cand;
+        bestW = qCanvas.width;
+        bestH = qCanvas.height;
+        bestQ = lv / 48;
+      }
+      if (cand.size <= targetBytes) {
+        return {
+          blob: cand,
+          qualityUsed: lv / 48,
+          width: qCanvas.width,
+          height: qCanvas.height,
+          targetMet: true,
+        };
       }
     }
+
     if (allowScaleDown) {
       let scale = 0.85;
       while (scale >= 0.25) {
-        const sw = Math.max(16, Math.round(working.width * scale));
-        const sh = Math.max(16, Math.round(working.height * scale));
-        const scaled = resizeCanvasHighQuality(working, sw, sh);
-        const qScaled = await quantizeCanvasColorsAsync(scaled, 24);
-        blob = await canvasToBlob(qScaled, 'image/png');
-        if (blob.size <= targetBytes) {
-          return { blob, qualityUsed: scale, width: sw, height: sh };
+        const sw = Math.max(16, Math.round(cleaned.width * scale));
+        const sh = Math.max(16, Math.round(cleaned.height * scale));
+        const scaled = resizeCanvasHighQuality(cleaned, sw, sh);
+        const qScaled = await quantizeCanvasColorsAsync(scaled, 16);
+        const cand = await canvasToBlob(qScaled, 'image/png');
+        if (cand.size < bestBlob.size) {
+          bestBlob = cand;
+          bestW = sw;
+          bestH = sh;
+          bestQ = scale;
+        }
+        if (cand.size <= targetBytes) {
+          return {
+            blob: cand,
+            qualityUsed: scale,
+            width: sw,
+            height: sh,
+            targetMet: true,
+          };
         }
         scale -= 0.12;
       }
     }
-    return { blob, qualityUsed: 0.5, width: working.width, height: working.height };
+
+    return {
+      blob: bestBlob,
+      qualityUsed: bestQ,
+      width: bestW,
+      height: bestH,
+      targetMet: bestBlob.size <= targetBytes,
+    };
   }
 
   let low = 0.05;
-  let high = 0.98;
-  let bestBlob = await canvasToBlob(working, mimeType, 0.85);
-  let bestQ = 0.85;
+  let high = 0.96;
+  let bestBlob = await canvasToBlob(working, mimeType, 0.82);
+  let bestQ = 0.82;
+  let bestW = working.width;
+  let bestH = working.height;
+
+  // Keep track of smallest candidate overall in case target cannot be met without scaling
+  let smallestBlob = bestBlob;
+  let smallestQ = bestQ;
 
   if (bestBlob.size <= targetBytes) {
-    low = 0.85;
+    low = 0.82;
   } else {
-    high = 0.85;
+    high = 0.82;
   }
+
+  let foundUnderTarget = bestBlob.size <= targetBytes;
 
   for (let i = 0; i < 8; i++) {
     const mid = (low + high) / 2;
     const candidate = await canvasToBlob(working, mimeType, mid);
+    if (candidate.size < smallestBlob.size) {
+      smallestBlob = candidate;
+      smallestQ = mid;
+    }
     if (candidate.size <= targetBytes) {
       bestBlob = candidate;
       bestQ = mid;
+      foundUnderTarget = true;
       low = mid;
     } else {
       high = mid;
     }
+  }
+
+  if (!foundUnderTarget) {
+    bestBlob = smallestBlob;
+    bestQ = smallestQ;
   }
 
   if (bestBlob.size > targetBytes && allowScaleDown) {
@@ -340,25 +435,54 @@ export async function compressToTargetSize(
       const sw = Math.max(32, Math.round(working.width * scale));
       const sh = Math.max(32, Math.round(working.height * scale));
       const scaled = resizeCanvasHighQuality(working, sw, sh, bg);
-      let sLow = 0.1;
-      let sHigh = 0.92;
-      let sBest = await canvasToBlob(scaled, mimeType, 0.5);
-      let sQ = 0.5;
+      let sLow = 0.08;
+      let sHigh = 0.9;
+      let sBest = await canvasToBlob(scaled, mimeType, 0.45);
+      let sQ = 0.45;
+      let sSmallest = sBest;
+      let sSmallestQ = sQ;
+      let sMet = sBest.size <= targetBytes;
+
+      if (sMet) sLow = 0.45;
+      else sHigh = 0.45;
+
       for (let j = 0; j < 6; j++) {
         const mid = (sLow + sHigh) / 2;
         const cand = await canvasToBlob(scaled, mimeType, mid);
+        if (cand.size < sSmallest.size) {
+          sSmallest = cand;
+          sSmallestQ = mid;
+        }
         if (cand.size <= targetBytes) {
           sBest = cand;
           sQ = mid;
+          sMet = true;
           sLow = mid;
         } else {
           sHigh = mid;
         }
       }
-      if (sBest.size <= targetBytes) {
-        return { blob: sBest, qualityUsed: sQ, width: sw, height: sh };
+
+      if (!sMet) {
+        sBest = sSmallest;
+        sQ = sSmallestQ;
       }
-      bestBlob = sBest;
+
+      if (sBest.size < bestBlob.size) {
+        bestBlob = sBest;
+        bestQ = sQ;
+        bestW = sw;
+        bestH = sh;
+      }
+      if (sBest.size <= targetBytes) {
+        return {
+          blob: sBest,
+          qualityUsed: sQ,
+          width: sw,
+          height: sh,
+          targetMet: true,
+        };
+      }
       scale -= 0.15;
     }
   }
@@ -366,12 +490,13 @@ export async function compressToTargetSize(
   return {
     blob: bestBlob,
     qualityUsed: bestQ,
-    width: working.width,
-    height: working.height,
+    width: bestW,
+    height: bestH,
+    targetMet: bestBlob.size <= targetBytes,
   };
 }
 
-async function quantizeCanvasColorsAsync(
+export async function quantizeCanvasColorsAsync(
   source: HTMLCanvasElement,
   levels: number
 ): Promise<HTMLCanvasElement> {
@@ -391,6 +516,12 @@ async function quantizeCanvasColorsAsync(
   const data = imgData.data;
   const step = 255 / Math.max(1, levels - 1);
   for (let i = 0; i < data.length; i += 4) {
+    if (data[i + 3] === 0) {
+      data[i] = 0;
+      data[i + 1] = 0;
+      data[i + 2] = 0;
+      continue;
+    }
     data[i] = Math.round(Math.round(data[i] / step) * step);
     data[i + 1] = Math.round(Math.round(data[i + 1] / step) * step);
     data[i + 2] = Math.round(Math.round(data[i + 2] / step) * step);
