@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 import { ToolPageShell } from '../components/ToolPageShell';
 import { useApp } from '../context/AppContext';
 import { getToolBySlug } from '../data/tools';
@@ -60,22 +61,30 @@ export const ToolRoutePage: React.FC = () => {
 
   if (!tool || !Component) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-20 text-center space-y-4">
-        <h1 className="text-2xl font-bold text-slate-900">
-          {lang === 'en' ? 'Page Not Found' : 'পৃষ্ঠা পাওয়া যায়নি'}
-        </h1>
-        <p className="text-sm text-slate-600">
-          {lang === 'en'
-            ? 'The requested tool or page could not be found.'
-            : 'অনুরোধ করা টুল বা পৃষ্ঠাটি পাওয়া যায়নি।'}
-        </p>
-        <Link
-          to="/all-tools"
-          className="inline-flex items-center px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 min-h-[44px]"
-        >
-          {lang === 'en' ? 'Browse All 15 Tools' : 'সকল ১৫টি টুল দেখুন'}
-        </Link>
-      </div>
+      <>
+        <SEOHead
+          title="Page Not Found | Fynof"
+          description="The requested tool or page could not be found on Fynof."
+          canonicalPath={`/${slug || ''}`}
+          noindex
+        />
+        <div className="max-w-2xl mx-auto px-4 py-20 text-center space-y-4">
+          <h1 className="text-2xl font-bold text-slate-900">
+            {lang === 'en' ? 'Page Not Found' : 'পৃষ্ঠা পাওয়া যায়নি'}
+          </h1>
+          <p className="text-sm text-slate-600">
+            {lang === 'en'
+              ? 'The requested tool or page could not be found.'
+              : 'অনুরোধ করা টুল বা পৃষ্ঠাটি পাওয়া যায়নি।'}
+          </p>
+          <Link
+            to="/all-tools"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 min-h-[44px]"
+          >
+            {lang === 'en' ? 'Browse All 15 Tools' : 'সকল ১৫টি টুল দেখুন'}
+          </Link>
+        </div>
+      </>
     );
   }
 

@@ -91,6 +91,11 @@ export const Footer: React.FC = () => {
                   {t.footer.terms}
                 </Link>
               </li>
+              <li>
+                <Link to="/disclaimer" className="hover:text-blue-600 transition-colors">
+                  {t.footer.disclaimer}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

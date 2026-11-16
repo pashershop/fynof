@@ -84,6 +84,7 @@ export const TRANSLATIONS: Record<
       contact: string;
       privacy: string;
       terms: string;
+      disclaimer: string;
       allTools: string;
       copyright: string;
     };
@@ -194,10 +195,11 @@ export const TRANSLATIONS: Record<
       navigation: 'Navigation',
       popular: 'Popular Tools',
       legal: 'Company & Legal',
-      about: 'About',
-      contact: 'Contact',
+      about: 'About Us',
+      contact: 'Contact Us',
       privacy: 'Privacy Policy',
-      terms: 'Terms',
+      terms: 'Terms of Service',
+      disclaimer: 'Disclaimer',
       allTools: 'All Tools',
       copyright: 'Fynof. Free client-side image tools.',
     },
@@ -308,9 +310,10 @@ export const TRANSLATIONS: Record<
       popular: 'জনপ্রিয় টুলস',
       legal: 'তথ্য ও নীতিমালা',
       about: 'আমাদের সম্পর্কে',
-      contact: 'যোগাযোগ',
+      contact: 'যোগাযোগ করুন',
       privacy: 'প্রাইভেসি পলিসি',
-      terms: 'শর্তাবলী',
+      terms: 'ব্যবহারের শর্তাবলী',
+      disclaimer: 'ডিসক্লেইমার',
       allTools: 'সব টুলস',
       copyright: 'Fynof. ফ্রি ক্লায়েন্ট-সাইড ইমেজ টুলস।',
     },

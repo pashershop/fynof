@@ -4,7 +4,8 @@ interface SEOHeadProps {
   title: string;
   description: string;
   canonicalPath: string;
-  jsonLd?: Record<string, unknown>;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const SITE_ORIGIN = 'https://fynof.pages.dev';
@@ -13,6 +14,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   canonicalPath,
+  noindex = false,
   jsonLd,
 }) => {
   useEffect(() => {
@@ -32,6 +34,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     };
 
     setMeta('meta[name="description"]', 'name', 'description', description);
+    setMeta(
+      'meta[name="robots"]',
+      'name',
+      'robots',
+      noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'
+    );
     setMeta('meta[property="og:title"]', 'property', 'og:title', title);
     setMeta('meta[property="og:description"]', 'property', 'og:description', description);
     setMeta('meta[property="og:url"]', 'property', 'og:url', canonicalUrl);
@@ -55,11 +63,20 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
         script.type = 'application/ld+json';
         document.head.appendChild(script);
       }
-      script.textContent = JSON.stringify(jsonLd);
+      const payload = Array.isArray(jsonLd)
+        ? {
+            '@context': 'https://schema.org',
+            '@graph': jsonLd.map((entry) => {
+              const { ['@context']: _ignored, ...rest } = entry;
+              return rest;
+            }),
+          }
+        : jsonLd;
+      script.textContent = JSON.stringify(payload);
     } else if (script) {
       script.remove();
     }
-  }, [title, description, canonicalPath, jsonLd]);
+  }, [title, description, canonicalPath, noindex, jsonLd]);
 
   return null;
 };

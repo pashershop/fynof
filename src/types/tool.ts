@@ -29,6 +29,7 @@ export interface ToolDefinition {
   description: LocalizedText;
   seoTitle: string;
   seoDescription: string;
+  seoOverview?: LocalizedText[];
   howToSteps: LocalizedText[];
   faqs: ToolFaq[];
   relatedIds: string[];

@@ -68,6 +68,16 @@ export const TOOLS: ToolDefinition[] = [
     seoTitle: 'Image Compressor – Reduce Image Size in KB Online | Fynof',
     seoDescription:
       'Compress JPG, PNG, and WEBP images online to 20KB, 50KB, 100KB, 200KB, or 500KB with instant before/after preview. 100% private client-side compression.',
+    seoOverview: [
+      {
+        en: 'Fynof Image Compressor shrinks JPG, JPEG, PNG, and WEBP photos locally inside your browser without sacrificing clarity. Use Smart Compression to automatically pick lossless PNG optimization, transparent WEBP conversion, or balanced lossy quality so output files stay genuinely smaller than the original.',
+        bn: 'Fynof ইমেজ কম্প্রেসর আপনার ব্রাউজারেই JPG, JPEG, PNG এবং WEBP ছবির মান অক্ষুণ্ণ রেখে সাইজ কমায়। স্মার্ট কম্প্রেশন স্বয়ংক্রিয়ভাবে লসলেস PNG বা স্বচ্ছ WEBP ব্যবহার করে যাতে আউটপুট ফাইল আসলের চেয়ে ছোট হয়।',
+      },
+      {
+        en: 'Need an exact file limit for portals or email attachments? Switch to Target File Size mode and choose 20 KB, 50 KB, 100 KB, 200 KB, 500 KB, or a custom KB value with live Before/After preview.',
+        bn: 'অনলাইন ফর্ম বা ইমেইলের জন্য নির্দিষ্ট সাইজ প্রয়োজন হলে Target File Size মোডে ২০ কেবি, ৫০ কেবি, ১০০ কেবি, ২০০ কেবি বা ৫০০ কেবি প্রিসেট বেছে নিয়ে Before/After প্রিভিউ দেখে ডাউনলোড করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload a JPG, PNG, or WEBP image from your device.',
@@ -123,9 +133,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Change image dimensions accurately in pixels or percentage with aspect ratio lock and one-click presets for Facebook, YouTube, Instagram, and WhatsApp.',
       bn: 'অ্যাস্পেক্ট রেশিও ঠিক রেখে পিক্সেল বা শতাংশ অনুযায়ী ছবি রিসাইজ করুন। Facebook, YouTube, Instagram ও WhatsApp প্রিসেট রয়েছে।',
     },
-    seoTitle: 'Image Resizer – Resize Photos by Pixel or Percentage | Fynof',
+    seoTitle: 'Image Resizer – Resize Photos by Pixel or Percent | Fynof',
     seoDescription:
       'Resize images online by custom pixels, percentage, or social media presets including YouTube Thumbnail, Facebook Cover, and Instagram Post. Free and private.',
+    seoOverview: [
+      {
+        en: 'Resize photos to exact pixel dimensions or percentage scales with multi-step high-quality resampling that keeps edges sharp. Toggle Maintain Aspect Ratio to avoid distortion, or pick one-click presets for Facebook Cover, YouTube Thumbnail, Instagram Post, and WhatsApp profile photos.',
+        bn: 'সঠিক পিক্সেল বা শতাংশ অনুযায়ী উচ্চমান বজায় রেখে ছবি রিসাইজ করুন। ছবি চ্যাপ্টা না হতে Maintain Aspect Ratio চালু রাখুন অথবা Facebook, YouTube, Instagram ও WhatsApp প্রিসেট ব্যবহার করুন।',
+      },
+      {
+        en: 'All resizing runs strictly in your browser memory—ideal for preparing web banners, product thumbnails, and crisp profile pictures in JPG, PNG, or WEBP.',
+        bn: 'সম্পূর্ণ রিসাইজ প্রক্রিয়া আপনার ব্রাউজারে চলে, ফলে কোনো সার্ভার আপলোড ছাড়াই দ্রুত ওয়েব ব্যানার বা প্রোফাইল ছবি তৈরি করা যায়।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Drop or browse the image you want to resize.',
@@ -174,6 +194,16 @@ export const TOOLS: ToolDefinition[] = [
     seoTitle: 'Image Converter – Convert JPG, PNG & WEBP Online | Fynof',
     seoDescription:
       'Convert JPG to PNG, PNG to JPG, JPG to WEBP, and WEBP to PNG/JPG directly in your browser with quality control and transparency background color options.',
+    seoOverview: [
+      {
+        en: 'Switch seamlessly between JPG, PNG, and WEBP formats directly on your device. Whether converting heavy PNG graphics to lightweight WEBP for faster websites or exporting universal JPG files for upload forms, you have complete control over output quality.',
+        bn: 'এক ক্লিকে JPG, PNG এবং WEBP ফরম্যাটে ছবি রূপান্তর করুন। ওয়েবসাইটের গতির জন্য WEBP কিংবা যেকোনো ফর্মের জন্য JPG ফরম্যাটে কোয়ালিটি নিয়ন্ত্রণসহ কনভার্ট করা যায়।',
+      },
+      {
+        en: 'When converting transparent PNG or WEBP images to JPG, Fynof automatically detects transparency and lets you choose a clean white or custom background color instead of a dark black box.',
+        bn: 'স্বচ্ছ PNG বা WEBP ছবি JPG-তে রূপান্তর করার সময় কালো ব্যাকগ্রাউন্ড এড়াতে Fynof স্বয়ংক্রিয়ভাবে সাদা বা কাস্টম ব্যাকগ্রাউন্ড কালার সেট করার সুবিধা দেয়।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload any JPG, PNG, or WEBP image.',
@@ -219,9 +249,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Interactive drag-and-resize image cropper supporting Free, 1:1, 4:3, 16:9, 3:2, Passport 35:45, and custom aspect ratios with rotation and zoom.',
       bn: 'মাউস বা টাচ দিয়ে সহজে ছবি ক্রপ করুন। Free, 1:1, 4:3, 16:9, 3:2, পাসপোর্ট 35:45 ও কাস্টম রেশিও, রোটেট এবং জুম সুবিধা।',
     },
-    seoTitle: 'Image Cropper – Crop Photos Online with Aspect Ratios | Fynof',
+    seoTitle: 'Image Cropper – Crop Photos & Aspect Ratios Online | Fynof',
     seoDescription:
       'Crop images online with free selection or locked ratios like 1:1, 4:3, 16:9, 3:2, and 35:45 passport size. Includes rotation and zoom controls.',
+    seoOverview: [
+      {
+        en: 'Frame every photograph accurately using interactive drag handles on desktop or touchscreens. Lock common photography ratios including 1:1 square, 4:3, 16:9 widescreen, 3:2 DSLR, and 35:45 passport portrait proportions, or enter any custom ratio.',
+        bn: 'ডেস্কটপ ও মোবাইলের টাচস্ক্রিনে সহজে ড্র্যাগ করে ছবি ক্রপ করুন। ১:১, ৪:৩, ১৬:৯, ৩:২, পাসপোর্ট ৩৫:৪৫ কিংবা যেকোনো কাস্টম অ্যাস্পেক্ট রেশিও বেছে নেওয়া যায়।',
+      },
+      {
+        en: 'Combine cropping with instant 90-degree rotation and canvas zoom controls to remove unwanted borders and prepare clean compositions in seconds.',
+        bn: 'ক্রপিংয়ের পাশাপাশি ৯০ ডিগ্রি রোটেশন এবং জুম ব্যবহার করে দ্রুত ছবির অপ্রয়োজনীয় অংশ বাদ দিয়ে নিখুঁত ফ্রেম তৈরি করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload the photo you want to crop.',
@@ -267,9 +307,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Generate exact DPI-calibrated 35×45 mm and 40×40 mm passport photos with White, Light Blue, or custom backgrounds and 2–8 copies on an A4 sheet (JPG & PDF).',
       bn: 'সঠিক DPI অনুযায়ী ৩৫×৪৫ মিমি ও ৪০×৪০ মিমি পাসপোর্ট ছবি তৈরি করুন। সাদা বা হালকা নীল ব্যাকগ্রাউন্ডসহ A4 শিটে ২, ৪, ৬ বা ৮ কপি JPG ও PDF ডাউনলোড।',
     },
-    seoTitle: 'Passport Photo Maker – 35x45mm A4 Print Sheet (JPG & PDF) | Fynof',
+    seoTitle: 'Passport Photo Maker – 35x45mm A4 Sheet & PDF | Fynof',
     seoDescription:
       'Create 35x45 mm or 40x40 mm passport size photos with white or light blue background and export 2, 4, 6, or 8 copies on an A4 printable JPG or PDF sheet.',
+    seoOverview: [
+      {
+        en: 'Design studio-ready 35×45 mm passport photos and 40×40 mm visa or ID portraits at true 300 DPI or 600 DPI resolution. Use the optional face alignment guide and smart edge-background replacement to switch studio walls to pure White, Light Blue, or any custom color.',
+        bn: '৩০০ বা ৬০০ DPI-তে সঠিক ৩৫×৪৫ মিমি পাসপোর্ট ও ৪০×৪০ মিমি ভিসা ছবি তৈরি করুন। ফেস অ্যালাইনমেন্ট গাইড এবং সাদা বা হালকা নীল ব্যাকগ্রাউন্ড সহজেই সেট করা যায়।',
+      },
+      {
+        en: 'Arrange 2, 4, 6, or 8 calibrated copies onto an exact 210×297 mm A4 print sheet and download as high-resolution JPG or print-ready PDF.',
+        bn: 'একটি ২১০×২৯৭ মিমি A4 শিটে ২, ৪, ৬ বা ৮ কপি ছবি সাজিয়ে প্রিন্ট উপযোগী JPG বা PDF হিসেবে ডাউনলোড করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload a front-facing portrait photo.',
@@ -315,9 +365,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Select multiple photos, reorder pages, choose A4, A5, or custom size, portrait/landscape orientation, margins, and quality to generate a clean PDF.',
       bn: 'একাধিক ছবি নির্বাচন করে ক্রম সাজান। A4, A5 বা কাস্টম পেজ সাইজ, পোর্ট্রেট/ল্যান্ডস্কেপ, মার্জিন ও কোয়ালিটি সেট করে PDF ডাউনলোড করুন।',
     },
-    seoTitle: 'Image to PDF – Combine Multiple Photos into One PDF | Fynof',
+    seoTitle: 'Image to PDF – Combine Photos into One PDF Free | Fynof',
     seoDescription:
       'Convert JPG, PNG, and WEBP images to PDF online. Reorder pages, set A4/A5 page size, portrait or landscape orientation, margins, and quality for free.',
+    seoOverview: [
+      {
+        en: 'Merge multiple scans, certificates, receipts, or photos into one organized PDF document right inside your browser. Reorder pages effortlessly, switch between A4, A5, or custom millimeter dimensions, and set Portrait or Landscape orientation.',
+        bn: 'একাধিক সার্টিফিকেট, নথি বা ছবি ব্রাউজারেই একটি সুবিন্যস্ত PDF ফাইলে যুক্ত করুন। পেজের ক্রম পরিবর্তন, A4/A5 বা কাস্টম সাইজ এবং পোর্ট্রেট/ল্যান্ডস্কেপ সেট করা যায়।',
+      },
+      {
+        en: 'Customize page margins and compression quality to balance sharp document readability with compact file size for academic or job portal uploads.',
+        bn: 'লেখা স্পষ্ট রেখে ফাইল সাইজ ছোট রাখতে পেজ মার্জিন এবং PDF কোয়ালিটি প্রয়োজনমতো সমন্বয় করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload one or multiple images at once.',
@@ -363,9 +423,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Preview PDF pages directly in your browser, pick specific pages or all pages, select output resolution, and export as JPG, PNG, or a single ZIP archive.',
       bn: 'ব্রাউজারে PDF-এর সব পেজ প্রিভিউ করুন। নির্দিষ্ট পেজ বা সব পেজ JPG/PNG ফরম্যাটে এবং একসঙ্গে ZIP আকারে ডাউনলোড করুন।',
     },
-    seoTitle: 'PDF to Image – Convert PDF Pages to JPG, PNG & ZIP | Fynof',
+    seoTitle: 'PDF to Image – Convert PDF Pages to JPG & PNG | Fynof',
     seoDescription:
       'Convert PDF pages to high-resolution JPG or PNG images in your browser. Select individual pages or export all pages together as a ZIP file.',
+    seoOverview: [
+      {
+        en: 'Extract crisp images from any PDF document without uploading confidential files to third-party servers. Preview every page thumbnail, type custom page ranges (such as 1, 3-5) or select all pages, and render at 1x to 4x resolution.',
+        bn: 'কোনো সার্ভারে ফাইল আপলোড ছাড়াই যেকোনো PDF থেকে স্পষ্ট ছবি বের করুন। সব পেজ প্রিভিউ করে নির্দিষ্ট পেজ রেঞ্জ (যেমন 1, 3-5) বা সব পেজ ১x থেকে ৪x রেজোলিউশনে কনভার্ট করুন।',
+      },
+      {
+        en: 'Download individual pages as JPG or PNG, or bundle every extracted page into a single convenient ZIP archive.',
+        bn: 'আলাদা JPG/PNG ছবি হিসেবে অথবা সব পেজ একসাথে একটি ZIP ফাইল আকারে ডাউনলোড করতে পারবেন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload a PDF file from your computer or phone.',
@@ -414,6 +484,16 @@ export const TOOLS: ToolDefinition[] = [
     seoTitle: 'Signature Resizer – 300x80 px & 20 KB Online Tool | Fynof',
     seoDescription:
       'Resize and crop signature photos to 300x80 px and under 20 KB for Bangladesh Govt jobs, BCS, Teletalk, and bank applications. Includes Black & White cleanup.',
+    seoOverview: [
+      {
+        en: 'Tailored for Bangladesh government job portals, BCS, Teletalk, and bank recruitment forms requiring an exact 300×80 px signature under 20 KB. Crop tightly around your handwritten ink and optionally enable Black & White mode to remove grey paper shadows.',
+        bn: 'সরকারি চাকরি, বিসিএস, টেলিটক ও ব্যাংক আবেদনের ৩০০×৮০ পিক্সেল এবং ২০ কেবি-র কম সিগনেচার তৈরির জন্য বিশেষভাবে নির্মিত। Black & White মোডে কাগজের ছায়া দূর করে কালি স্পষ্ট করা যায়।',
+      },
+      {
+        en: 'Automatic KB compression ensures your exported JPG or PNG signature passes strict portal validation on the first attempt.',
+        bn: 'স্বয়ংক্রিয় KB টার্গেট থাকায় আপনার এক্সপোর্ট করা JPG বা PNG সিগনেচার প্রথমবারেই আবেদন পোর্টালে গৃহীত হবে।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload a photo or scan of your handwritten signature.',
@@ -462,6 +542,16 @@ export const TOOLS: ToolDefinition[] = [
     seoTitle: 'NID & Job Photo Resizer – 300x300 px under 100 KB | Fynof',
     seoDescription:
       'Resize job application and NID photos to 300x300 px with exact 20 KB, 50 KB, or 100 KB file size targets and live JPG size preview.',
+    seoOverview: [
+      {
+        en: 'Prepare compliant candidate photos for Teletalk, BCS, Bangladesh Bank, university admissions, and NID updates in seconds. Frame your headshot inside the 300×300 px preset or specify custom pixel dimensions.',
+        bn: 'টেলিটক, বিসিএস, ব্যাংক, বিশ্ববিদ্যালয় ভর্তি এবং NID ফর্মের জন্য ৩০০×৩০০ পিক্সেল বা কাস্টম মাপের ছবি সহজে তৈরি করুন।',
+      },
+      {
+        en: 'Select a 20 KB, 50 KB, or 100 KB limit with live JPG byte calculation so you know the exact output size before downloading.',
+        bn: 'লাইভ ফাইল সাইজ প্রিভিউ দেখে ২০ কেবি, ৫০ কেবি বা ১০০ কেবি সীমার মধ্যে নিখুঁত JPG ছবি ডাউনলোড করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload your portrait photo.',
@@ -507,9 +597,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Upload multiple photos, drag and drop to swap cells, customize border size, border color, rounded corners, and canvas dimensions, then export JPG or PNG.',
       bn: 'একাধিক ছবি আপলোড করে ড্র্যাগ অ্যান্ড ড্রপ দিয়ে অবস্থান বদলান। বর্ডার সাইজ, কালার, রাউন্ডেড কর্নার ও ক্যানভাস সাইজ কাস্টমাইজ করুন।',
     },
-    seoTitle: 'Photo Collage Maker – 2, 4, 6 & 9 Photo Grid Layouts | Fynof',
+    seoTitle: 'Photo Collage Maker – 2, 4, 6 & 9 Photo Grids Free | Fynof',
     seoDescription:
       'Create custom 2, 4, 6, and 9 photo collages online. Drag and drop to reorder photos, customize borders, rounded corners, and download JPG or PNG.',
+    seoOverview: [
+      {
+        en: 'Combine 2, 4, 6, or 9 memories into clean grid layouts or split collages without installing heavy apps. Swap any tile by dragging or tapping Swap, replace individual photos, and fine-tune grid borders, background colors, and rounded corners.',
+        bn: 'কোনো অ্যাপ ছাড়াই ২, ৪, ৬ বা ৯টি ছবি সুন্দর গ্রিড লেআউটে সাজান। ড্র্যাগ বা সোয়াপ করে ছবির জায়গা বদলান এবং বর্ডার, কালার ও রাউন্ডেড কর্নার কাস্টমাইজ করুন।',
+      },
+      {
+        en: 'Export crisp high-resolution JPG or PNG collages ready for Instagram posts, family albums, or product comparisons.',
+        bn: 'সোশ্যাল মিডিয়া পোস্ট বা প্রোডাক্ট তুলনার জন্য হাই-রেজোলিউশন JPG বা PNG ফরম্যাটে কোলাজ সেভ করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Choose a 2, 4, 6, or 9 photo layout and upload your images.',
@@ -555,9 +655,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Fix upside-down or mirrored photos with 90°, 180°, 270° rotation, fine straightening, horizontal/vertical flipping, Undo/Redo, and instant download.',
       bn: 'উল্টানো বা বাঁকা ছবি ৯০°, ১৮০°, ২৭০° রোটেট করুন, অনুভূমিক বা উল্লম্ব ফ্লিপ করুন এবং Undo/Redo সুবিধাসহ ডাউনলোড করুন।',
     },
-    seoTitle: 'Image Rotator & Flipper – Rotate & Mirror Photos Online | Fynof',
+    seoTitle: 'Image Rotator & Flipper – Rotate Photos Online | Fynof',
     seoDescription:
       'Rotate images 90, 180, or 270 degrees and flip horizontally or vertically online with lossless quality and instant download.',
+    seoOverview: [
+      {
+        en: 'Fix sideways phone photos, scanned documents, or mirrored selfies in one click. Rotate cleanly by 90°, 180°, or 270° with automatic canvas dimension adjustment, apply horizontal or vertical mirroring, or dial in custom straightening angles.',
+        bn: 'মোবাইলে তোলা বাঁকা ছবি বা উল্টো স্ক্যান ডকুমেন্ট এক ক্লিকে ৯০°, ১৮০° বা ২৭০° রোটেট করুন অথবা হরাইজন্টাল ও ভার্টিক্যাল ফ্লিপ করুন।',
+      },
+      {
+        en: 'Full Undo/Redo history and live output dimension readouts ensure accurate orientation before saving.',
+        bn: 'Undo/Redo সুবিধা এবং লাইভ পিক্সেল ডাইমেনশন দেখে নিখুঁত অবস্থায় ছবি ডাউনলোড করা যায়।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload the image you need to rotate or mirror.',
@@ -603,9 +713,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Protect your photos with custom text or transparent PNG logo watermarks. Adjust font size, color, opacity, rotation angle, and exact grid or tiled placement.',
       bn: 'আপনার ছবি সুরক্ষিত রাখতে টেক্সট বা লোগো ওয়াটারমার্ক বসান। ফন্ট সাইজ, কালার, অপাসিটি, রোটেশন ও পজিশন নিয়ন্ত্রণ করুন।',
     },
-    seoTitle: 'Image Watermark – Add Text or Logo Watermark Online | Fynof',
+    seoTitle: 'Image Watermark – Add Text or Logo Watermark | Fynof',
     seoDescription:
       'Add custom text or logo watermarks to images in your browser. Control font size, color, opacity, rotation, and position with instant preview.',
+    seoOverview: [
+      {
+        en: 'Protect photography portfolios, online store product shots, and official documents with custom text or transparent PNG logo watermarks. Adjust font size, color, opacity, rotation angle, and corner, center, or full-frame tiled placement.',
+        bn: 'আপনার তোলা ছবি, ই-কমার্স প্রোডাক্ট বা ডকুমেন্ট সুরক্ষিত রাখতে কাস্টম টেক্সট বা PNG লোগো ওয়াটারমার্ক যুক্ত করুন। সাইজ, কালার, অপাসিটি, রোটেশন ও টাইলড পজিশন নিয়ন্ত্রণ করা যায়।',
+      },
+      {
+        en: 'Choose JPG, PNG, or WEBP export and preview every watermark adjustment live without server uploads.',
+        bn: 'লাইভ প্রিভিউ দেখে JPG, PNG অথবা WEBP ফরম্যাটে ওয়াটারমার্কযুক্ত ছবি সেভ করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload your base photo.',
@@ -651,9 +771,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Protect privacy by brushing smooth Gaussian blur or mosaic pixelation over faces, text, or sensitive details, with box-region selection and Undo/Redo.',
       bn: 'গোপনীয়তা রক্ষায় ব্রাশ বা বক্স সিলেকশনের মাধ্যমে মুখ, লেখা বা সংবেদনশীল অংশ ব্লার অথবা পিক্সেলেট করুন। Undo ও Redo সুবিধা রয়েছে।',
     },
-    seoTitle: 'Image Blur Tool – Blur Faces & Pixelate Regions Online | Fynof',
+    seoTitle: 'Image Blur Tool – Blur Faces & Pixelate Online | Fynof',
     seoDescription:
       'Blur faces, sensitive text, or selected areas in images using a brush or box selector with Gaussian blur and pixelate modes. 100% private.',
+    seoOverview: [
+      {
+        en: 'Censor faces, license plates, phone numbers, or sensitive document fields before sharing images online. Choose smooth Gaussian Blur or Mosaic Pixelate, paint freely with an interpolated brush that stays gap-free on fast swipes, or drag a precise rectangular box.',
+        bn: 'ছবি শেয়ার করার আগে মুখ, নম্বরপ্লেট, ফোন নম্বর বা গোপন তথ্য আড়াল করুন। মসৃণ Gaussian ব্লার বা পিক্সেলেট মোডে ব্রাশ বা বক্স সিলেকশন ব্যবহার করা যায়।',
+      },
+      {
+        en: 'Because all pixel processing stays inside your browser memory, private images are never sent over the internet.',
+        bn: 'সম্পূর্ণ কাজ আপনার ডিভাইসের ব্রাউজারেই হয় বলে সংবেদনশীল ছবি কখনোই ইন্টারনেটে আপলোড হয় না।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload the image containing areas you want to hide.',
@@ -699,9 +829,19 @@ export const TOOLS: ToolDefinition[] = [
       en: 'Enhance photos with curated presets (Grayscale, Sepia, Vintage) and precision sliders for Brightness, Contrast, Saturation, Blur, Sharpen, and Intensity.',
       bn: 'Grayscale, Sepia, Vintage প্রিসেট এবং Brightness, Contrast, Saturation, Blur, Sharpen ও Intensity স্লাইডার দিয়ে ছবি সুন্দর করুন।',
     },
-    seoTitle: 'Image Filters – Photo Effects, Sharpen & Color Adjustments | Fynof',
+    seoTitle: 'Image Filters – Photo Effects & Color Editor | Fynof',
     seoDescription:
       'Apply Grayscale, Sepia, Vintage filters and adjust brightness, contrast, saturation, blur, and sharpen online with real-time before/after preview.',
+    seoOverview: [
+      {
+        en: 'Retouch portraits, product photos, and scanned documents with instant Grayscale, Sepia, and Vintage presets plus independent Brightness, Contrast, Saturation, Blur, Sharpen, and Intensity controls. Heavy 3×3 sharpen convolution runs smoothly in a Web Worker.',
+        bn: 'Grayscale, Sepia ও Vintage ফিল্টার এবং Brightness, Contrast, Saturation, Blur ও Sharpen স্লাইডার দিয়ে ছবি নিখুঁত করুন। শার্পেন প্রসেসিং দ্রুত করতে ওয়েব ওয়ার্কার ব্যবহার করা হয়েছে।',
+      },
+      {
+        en: 'Use the interactive Before/After split slider to verify color balance and crispness before downloading.',
+        bn: 'Before/After স্লাইডারের মাধ্যমে মূল ও এডিট করা ছবির পার্থক্য যাচাই করে ডাউনলোড করুন।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Upload a photo into the filter editor.',
@@ -750,6 +890,16 @@ export const TOOLS: ToolDefinition[] = [
     seoTitle: 'Image to Base64 & Base64 to Image Converter | Fynof',
     seoDescription:
       'Convert JPG, PNG, and WEBP images to Base64 Data URIs or decode Base64 strings back into downloadable image files directly in your browser.',
+    seoOverview: [
+      {
+        en: 'A two-way developer utility for encoding JPG, PNG, and WEBP assets into clean Base64 strings or full HTML/CSS Data URIs with one-click copy. Switch to the Decode tab to paste any Base64 payload—even without a MIME prefix—and inspect or download the image.',
+        bn: 'ডেভেলপারদের জন্য দ্রুত Base64 কনভার্টার: JPG, PNG ও WEBP ছবিকে Base64 বা Data URI কোডে রূপান্তর করে কপি করুন, অথবা Base64 স্ট্রিং পেস্ট করে ছবি ডিকোড ও ডাউনলোড করুন।',
+      },
+      {
+        en: 'Built with byte validation and character checks so malformed strings are caught cleanly without freezing your browser tab.',
+        bn: 'সঠিক ফরম্যাট ও সাইজ যাচাই সুবিধাসহ তৈরি, ফলে ব্রাউজার হ্যাং না হয়ে দ্রুত ফলাফল পাওয়া যায়।',
+      },
+    ],
     howToSteps: [
       {
         en: 'Switch between "Image to Base64" and "Base64 to Image" tabs.',

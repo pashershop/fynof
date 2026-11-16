@@ -26,20 +26,58 @@ export const ToolPageShell: React.FC<ToolPageShellProps> = ({ tool, children }) 
     .map((id) => getToolById(id))
     .filter((item): item is ToolDefinition => Boolean(item));
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebApplication',
-    name: `${tool.name.en} – Fynof`,
-    url: `https://fynof.pages.dev/${tool.slug}`,
-    applicationCategory: 'MultimediaApplication',
-    operatingSystem: 'All',
-    description: tool.seoDescription,
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
+  const jsonLd: Record<string, unknown>[] = [
+    {
+      '@type': 'WebApplication',
+      name: `${tool.name.en} – Fynof`,
+      url: `https://fynof.pages.dev/${tool.slug}`,
+      applicationCategory: 'MultimediaApplication',
+      operatingSystem: 'All',
+      description: tool.seoDescription,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
     },
-  };
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://fynof.pages.dev/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: category ? category.name.en : tool.category,
+          item: `https://fynof.pages.dev/all-tools?cat=${tool.category}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: tool.name.en,
+          item: `https://fynof.pages.dev/${tool.slug}`,
+        },
+      ],
+    },
+  ];
+
+  if (tool.faqs.length > 0) {
+    jsonLd.push({
+      '@type': 'FAQPage',
+      mainEntity: tool.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question.en,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer.en,
+        },
+      })),
+    });
+  }
 
   return (
     <>
@@ -99,6 +137,20 @@ export const ToolPageShell: React.FC<ToolPageShellProps> = ({ tool, children }) 
             ))}
           </div>
         </section>
+
+        {/* Unique Tool Overview & Use Cases */}
+        {tool.seoOverview && tool.seoOverview.length > 0 && (
+          <section className="mt-12 pt-10 border-t border-slate-200 max-w-4xl">
+            <h2 className="text-xl font-bold text-slate-900 mb-4">
+              {lang === 'en' ? `About ${tool.name.en}` : `${tool.name.bn} সম্পর্কে বিস্তারিত`}
+            </h2>
+            <div className="space-y-3 text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+              {tool.seoOverview.map((para, idx) => (
+                <p key={idx}>{para[lang]}</p>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Tool FAQ Section */}
         {tool.faqs.length > 0 && (

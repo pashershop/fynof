@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 import {
   AboutPage,
   ContactPage,
+  DisclaimerPage,
   PrivacyPolicyPage,
   TermsPage,
 } from './pages/StaticPages';
@@ -38,6 +39,7 @@ export default function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsPage />} />
+              <Route path="/disclaimer" element={<DisclaimerPage />} />
               <Route path="/:slug" element={<ToolRoutePage />} />
             </Routes>
           </main>
